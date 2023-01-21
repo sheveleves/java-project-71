@@ -10,12 +10,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        uses: action/setup-java@v3
+        uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
       - name: Buils with Gradle
-        uses: gragle/gradle-build-action@v2
+        uses: gradle/gradle-build-action@v2
         with:
           arguments: build
           
