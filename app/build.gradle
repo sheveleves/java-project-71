@@ -10,6 +10,14 @@ jacocoTestReport {
     dependsOn test
 }
 
+jacocoTestReport {
+    reports {
+        xml.required = false
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
+}
+
 group 'hexlet.code'
 version '1.0-SNAPSHOT'
 
