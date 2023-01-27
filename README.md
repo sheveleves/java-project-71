@@ -6,3 +6,6 @@
 
 Asciinema for step 5 of second project. Compares flat json files.
 https://asciinema.org/a/8JwrpZyUj51Nijaw8eBHwIUNy
+
+Asciinema for step 7 of second project. Compares two yml files.
+https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg
