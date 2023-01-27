@@ -1,0 +1,14 @@
+---
+#list. string type
+ip: [80.80.80.80, 192.168.20.30, 10.10.10.5]
+#list. block type
+data:
+  - data17
+  - data22
+  - data20
+#map set
+host: hexlet.oi
+author: Evgeniy Sheveles
+setting-publication: 2020
+#string
+description: "Report time at 09.00 26/01/23"
