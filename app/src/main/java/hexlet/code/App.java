@@ -20,12 +20,12 @@ public class App implements Callable<String> {
     private static List<String> sortedKeys = new ArrayList<>();
 
 
-    public static void setMapFirstFile(Map<String, Object> mapFirstFile) {
-        App.mapFirstFile = mapFirstFile;
+    public static void setMapFirstFile(Map<String, Object> mapData) {
+        App.mapFirstFile = mapData;
     }
 
-    public static void setMapSecondFile(Map<String, Object> mapSecondFile) {
-        App.mapSecondFile = mapSecondFile;
+    public static void setMapSecondFile(Map<String, Object> mapData) {
+        App.mapSecondFile = mapData;
     }
 
     public static Map<String, Object> getMapFirstFile() {
