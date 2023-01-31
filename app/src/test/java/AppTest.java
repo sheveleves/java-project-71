@@ -1,10 +1,8 @@
 import hexlet.code.Differ;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import hexlet.code.Parser;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 
 public class AppTest {
 
@@ -18,7 +16,7 @@ public class AppTest {
     private String file6Yml = "src/test/resources/file6.yml";
 
     @Test
-    public void compareJson1() throws IOException {
+    public void compareJson1() throws Exception {
         String actual = Differ.generate(file1Json, file2Json);
         String expected = "{\n"
                 + "  - follow: false\n"
@@ -31,7 +29,7 @@ public class AppTest {
         assertThat(actual).isEqualTo(expected);
     }
     @Test
-    public void compareJson2() throws IOException {
+    public void compareJson2() throws Exception {
         String actual = Differ.generate(file2Json, file1Json);
         String expected = "{\n"
                 + "  + follow: false\n"
@@ -45,8 +43,8 @@ public class AppTest {
     }
 
     @Test
-    public void compareYml() throws IOException {
-        String actual = Parser.generate(file5Yml, file6Yml);
+    public void compareYml() throws Exception {
+        String actual = Differ.generate(file5Yml, file6Yml);
         String expected = "{\n"
                 + "  - follow: false\n"
                 + "    host: hexlet.io\n"
@@ -59,7 +57,7 @@ public class AppTest {
     }
 
     @Test
-    public void emptyJson1() throws IOException {
+    public void emptyJson1() throws Exception {
         String actual = Differ.generate(file1Json, emptyJson);
         String expected = "{\n"
                 + "  - follow: false\n"
@@ -70,7 +68,7 @@ public class AppTest {
         assertThat(actual).isEqualTo(expected);
     }
     @Test
-    public void emptyJson2() throws IOException {
+    public void emptyJson2() throws Exception {
         String actual = Differ.generate(emptyJson, file2Json);
         String expected = "{\n"
                 + "  + host: hexlet.io\n"
@@ -81,36 +79,32 @@ public class AppTest {
     }
 
     @Test
-    public void compareYml1() throws IOException {
-        String actual = Parser.generate(file3Yml, file4Yml);
+    public void compareYml1() throws Exception {
+        String actual = Differ.generate(file3Yml, file4Yml);
         String expected = "{\n"
-                + "    author: Evgeniy Sheveles\n"
-                + "  - data: [data17, data22, data20]\n"
-                + "  + data: [data17, data5, data20]\n"
-                + "  - description: Report time at 09.00 26/01/23\n"
-                + "  + description: Report time at 10.00 26/01/23\n"
-                + "    host: hexlet.oi\n"
-                + "  - ip: [80.80.80.80, 192.168.20.30, 10.10.10.5]\n"
-                + "  + ip: [80.80.80.80, 192.168.20.30]\n"
-                + "  - setting-publication: 2020\n"
-                + "  + setting-publication: 2023\n"
-                + "}";
-        assertThat(actual).isEqualTo(expected);
-    }
-    @Test
-    public void compareYml2() throws IOException {
-        String actual = Parser.generate(file4Yml, file3Yml);
-        String expected = "{\n"
-                + "    author: Evgeniy Sheveles\n"
-                + "  - data: [data17, data5, data20]\n"
-                + "  + data: [data17, data22, data20]\n"
-                + "  - description: Report time at 10.00 26/01/23\n"
-                + "  + description: Report time at 09.00 26/01/23\n"
-                + "    host: hexlet.oi\n"
-                + "  - ip: [80.80.80.80, 192.168.20.30]\n"
-                + "  + ip: [80.80.80.80, 192.168.20.30, 10.10.10.5]\n"
-                + "  - setting-publication: 2023\n"
-                + "  + setting-publication: 2020\n"
+                + "    chars1: [a, b, c]\n"
+                + "  - chars2: [d, e, f]\n"
+                + "  + chars2: false\n"
+                + "  - checked: false\n"
+                + "  + checked: true\n"
+                + "  - default: null\n"
+                + "  + default: [value1, value2]\n"
+                + "  - id: 45\n"
+                + "  + id: null\n"
+                + "  - key1: value1\n"
+                + "  + key2: value2\n"
+                + "    numbers1: [1, 2, 3, 4]\n"
+                + "  - numbers2: [2, 3, 4, 5]\n"
+                + "  + numbers2: [22, 33, 44, 55]\n"
+                + "  - numbers3: [3, 4, 5]\n"
+                + "  + numbers4: [4, 5, 6]\n"
+                + "  + obj1: {nestedKey=value, isNested=true}\n"
+                + "  - setting1: Some value\n"
+                + "  + setting1: Another value\n"
+                + "  - setting2: 200\n"
+                + "  + setting2: 300\n"
+                + "  - setting3: true\n"
+                + "  + setting3: none\n"
                 + "}";
         assertThat(actual).isEqualTo(expected);
     }

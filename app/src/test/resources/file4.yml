@@ -1,14 +1,16 @@
 ---
-#list. string type
-ip: [80.80.80.80, 192.168.20.30]
-#list. block type
-data:
-  - data17
-  - data5
-  - data20
-#string
-description: "Report time at 10.00 26/01/23"
-#map set
-host: hexlet.oi
-author: Evgeniy Sheveles
-setting-publication: 2023
+setting1: "Another value"
+setting2: 300
+setting3: "none"
+key2: "value2"
+numbers1: [1, 2, 3, 4]
+numbers2: [22, 33, 44, 55]
+id: null
+default: ["value1", "value2"]
+checked: true
+numbers4: [4, 5, 6]
+chars1: ["a", "b", "c"]
+chars2: false
+obj1:
+  "nestedKey": "value"
+  "isNested": true

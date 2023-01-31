@@ -1,35 +1,27 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Map;
 
+import static hexlet.code.Utility.getType;
+import static hexlet.code.Utility.readFileToString;
+
 public class Differ {
+    public static String generate(String filepath1, String filepath2, String format) throws Exception {
 
+        String file1 = readFileToString(filepath1);
+        String file2 = readFileToString(filepath2);
 
-    private static Map<String, Object> readFileToMap(final String filepath) throws IOException {
-        Path path = Paths.get(filepath).toAbsolutePath().normalize();
-        String str = Files.readString(path);
-        if (str.equals("")) {
-            return new HashMap<String, Object>();
+        String typeFile = getType(filepath1, filepath2);
+        Map<String, Property> diff = Parser.compareData(file1, file2, typeFile);
+
+        if (format.equals("stylish")) {
+            return Stylish.writeCompare(diff);
         }
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(str, new TypeReference<Map<String, Object>>() { });
+
+        return Stylish.writeCompare(diff);
     }
 
-
-
-
-    public static String generate(String filepath1, String filepath2) throws IOException {
-        App.setMapFirstFile(readFileToMap(filepath1));
-        App.setMapSecondFile(readFileToMap(filepath2));
-        App.takeSortedKey();
-        return App.generateReport(App.getSortedKeys());
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
     }
 }

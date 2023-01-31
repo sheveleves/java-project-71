@@ -4,28 +4,57 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class Parser {
-    private static Map<String, Object> readFileToMap(final String filepath) throws IOException {
-        Path path = Paths.get(filepath).toAbsolutePath().normalize();
-        String str = Files.readString(path);
-        if (str.equals("")) {
-            return new HashMap<String, Object>();
+
+    public static Map<String, Property> compareData(final String data1,
+                                                  final String data2, final String typeFiles) throws Exception {
+
+        Map<String, Object> map1 = getMapFromData(data1, typeFiles);
+        Map<String, Object> map2 = getMapFromData(data2, typeFiles);
+        Set<String> keys = new TreeSet<>(map1.keySet());
+        keys.addAll(map2.keySet());
+
+
+        Map<String, Property> compareMap = new TreeMap<>();
+        for (String key: keys) {
+            if (!map1.containsKey(key)) {
+                compareMap.put(key, new Property(Property.ADD, map2.get(key)));
+            } else if (!map2.containsKey(key)) {
+                compareMap.put(key, new Property(Property.DELETE, map1.get(key)));
+            } else if (Objects.equals(map1.get(key), map2.get(key))) {
+                compareMap.put(key, new Property(Property.UNCHANGED, map1.get(key), map2.get(key)));
+            } else {
+                compareMap.put(key, new Property(Property.CHANGED, map1.get(key), map2.get(key)));
+            }
         }
-        ObjectMapper objectMapper = new YAMLMapper();
-        return objectMapper.readValue(str, new TypeReference<Map<String, Object>>() { });
+        return compareMap;
     }
 
-    public static String generate(String filepath1, String filepath2) throws IOException {
-        App.setMapFirstFile(readFileToMap(filepath1));
-        App.setMapSecondFile(readFileToMap(filepath2));
-        App.takeSortedKey();
-        return App.generateReport(App.getSortedKeys());
+
+
+    private static Map<String, Object> getMapFromData(final String data, final String typeFile) throws Exception {
+        if (data.isEmpty()) {
+            return new LinkedHashMap<>();
+        }
+
+        ObjectMapper mapper;
+        switch (typeFile) {
+            case "JSON":
+                mapper = new ObjectMapper();
+                break;
+            case "YAML":
+                mapper = new YAMLMapper();
+                break;
+            default: throw new Exception("File type not defined!");
+        }
+        return mapper.readValue(data, new TypeReference<Map<String, Object>>() { });
     }
+
 }
