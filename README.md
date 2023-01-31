@@ -9,3 +9,7 @@ https://asciinema.org/a/8JwrpZyUj51Nijaw8eBHwIUNy
 
 Asciinema for step 7 of second project. Compares two yml files.
 https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg
+
+Asciinema for step 8 of second project. Add Stylish.
+https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ
+
