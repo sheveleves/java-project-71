@@ -5,13 +5,13 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/dca51a23f0dc271dc130/test_coverage)](https://codeclimate.com/github/sheveleves/java-project-71/test_coverage)
 
 Asciinema for step 5 of second project. Compares flat json files.
-https://asciinema.org/a/8JwrpZyUj51Nijaw8eBHwIUNy
+[![asciicast](https://asciinema.org/a/8JwrpZyUj51Nijaw8eBHwIUNy.svg)](https://asciinema.org/a/8JwrpZyUj51Nijaw8eBHwIUNy)
 
 Asciinema for step 7 of second project. Compares two yml files.
-https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg
+[![asciicast](https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg.svg)](https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg)
 
 Asciinema for step 8 of second project. Add Stylish.
-[![asciicast](https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ.svg)]
+[![asciicast](https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ.svg)](https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ)
 
 Asciinema for step 8 of second project. Add Plain.
 [![asciicast](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99.svg)](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99)
