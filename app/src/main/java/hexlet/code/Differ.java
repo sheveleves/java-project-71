@@ -1,5 +1,7 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Formatter;
+
 import java.util.Map;
 
 import static hexlet.code.Utility.getType;
@@ -14,11 +16,7 @@ public class Differ {
         String typeFile = getType(filepath1, filepath2);
         Map<String, Property> diff = Parser.compareData(file1, file2, typeFile);
 
-        if (format.equals("stylish")) {
-            return Stylish.writeCompare(diff);
-        }
-
-        return Stylish.writeCompare(diff);
+        return Formatter.formatter(format, diff);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {
