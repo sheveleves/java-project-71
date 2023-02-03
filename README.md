@@ -13,3 +13,6 @@ https://asciinema.org/a/89k9QtjaIAKy9YxeT5J2AEjKg
 Asciinema for step 8 of second project. Add Stylish.
 https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ
 
+Asciinema for step 8 of second project. Add Plain.
+[![asciicast](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99.svg)](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99)
+
