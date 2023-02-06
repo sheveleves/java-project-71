@@ -3,6 +3,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 
 public class AppTest {
 
@@ -16,9 +19,14 @@ public class AppTest {
     private String file6Yml = "src/test/resources/file6.yml";
     private String internal3Json = "src/test/resources/internal3.json";
     private String internal4Json = "src/test/resources/internal4.json";
+    private String testJson = "src/test/resources/expectedTestJson.txt";
 
-
-
+    @Test
+    public void testJson() throws Exception {
+        String actual = Differ.generate(internal3Json, internal4Json, "json");
+        String expected = Files.readString(Path.of(testJson));
+        assertThat(actual).isEqualTo(expected);
+    }
     @Test
     public void testPlain() throws Exception {
         String actual = Differ.generate(internal3Json, internal4Json, "plain");
@@ -134,7 +142,7 @@ public class AppTest {
 
     @Test
     public void compareInternalJson() throws Exception {
-        String actual = Differ.generate(internal3Json, internal4Json);
+        String actual = Differ.generate(internal3Json, internal4Json, "stylish");
         String expected = "{\n"
                 + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
