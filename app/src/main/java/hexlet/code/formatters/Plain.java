@@ -21,6 +21,7 @@ public class Plain {
                 default -> { }
             }
         }
+        builder.deleteCharAt(builder.length() - 1);
         return builder.toString();
     }
 
