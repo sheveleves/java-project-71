@@ -13,6 +13,9 @@ Asciinema for step 7 of second project. Compares two yml files.
 Asciinema for step 8 of second project. Add Stylish.
 [![asciicast](https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ.svg)](https://asciinema.org/a/EFKF9zZvRA6Df8mixmRNmkagZ)
 
-Asciinema for step 8 of second project. Add Plain.
+Asciinema for step 9 of second project. Add Plain.
 [![asciicast](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99.svg)](https://asciinema.org/a/yzh0Tv9AvB8GtpzfKPgjiOv99)
+
+Asciinema for step 10 of second project. Add Json.
+[![asciicast](https://asciinema.org/a/iuYiT73ubFsEJVQicA5mNn2xR.svg)](https://asciinema.org/a/iuYiT73ubFsEJVQicA5mNn2xR)
 
