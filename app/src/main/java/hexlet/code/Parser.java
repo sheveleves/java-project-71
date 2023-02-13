@@ -13,8 +13,8 @@ import java.util.TreeSet;
 
 public class Parser {
 
-    public static Map<String, Property> compareData(final String data1,
-                                                  final String data2, final String typeFiles) throws Exception {
+    public static Map<String, Property> compareData(String data1,
+                                                  String data2, String typeFiles) throws Exception {
 
         Map<String, Object> map1 = getMapFromData(data1, typeFiles);
         Map<String, Object> map2 = getMapFromData(data2, typeFiles);

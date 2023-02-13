@@ -4,8 +4,8 @@ import hexlet.code.formatters.Formatter;
 
 import java.util.Map;
 
-import static hexlet.code.Utility.getType;
-import static hexlet.code.Utility.readFileToString;
+import static hexlet.code.FileUtils.getType;
+import static hexlet.code.FileUtils.readFileToString;
 
 public class Differ {
     public static String generate(String filepath1, String filepath2, String format) throws Exception {
