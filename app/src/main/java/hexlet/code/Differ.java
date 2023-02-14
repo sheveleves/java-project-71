@@ -14,7 +14,7 @@ public class Differ {
         String file2 = readFileToString(filepath2);
 
         String pathFile = getPathFile(filepath1);
-        Map<String, Property> diff = Parser.compareData(file1, file2, pathFile);
+        Map<String, DiffProperty> diff = Parser.compareData(file1, file2, pathFile);
 
         return Formatter.formatter(format, diff);
     }

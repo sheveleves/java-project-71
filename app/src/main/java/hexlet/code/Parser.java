@@ -13,8 +13,8 @@ import java.util.TreeSet;
 
 public class Parser {
 
-    public static Map<String, Property> compareData(String data1,
-                                                  String data2, String pathFiles) throws Exception {
+    public static Map<String, DiffProperty> compareData(String data1,
+                                                        String data2, String pathFiles) throws Exception {
 
         Map<String, Object> map1 = getMapFromData(data1, pathFiles);
         Map<String, Object> map2 = getMapFromData(data2, pathFiles);
@@ -22,16 +22,16 @@ public class Parser {
         keys.addAll(map2.keySet());
 
 
-        Map<String, Property> compareMap = new TreeMap<>();
+        Map<String, DiffProperty> compareMap = new TreeMap<>();
         for (String key: keys) {
             if (!map1.containsKey(key)) {
-                compareMap.put(key, new Property(Property.ADD, map2.get(key)));
+                compareMap.put(key, new DiffProperty(DiffProperty.ADD, map2.get(key)));
             } else if (!map2.containsKey(key)) {
-                compareMap.put(key, new Property(Property.DELETE, map1.get(key)));
+                compareMap.put(key, new DiffProperty(DiffProperty.DELETE, map1.get(key)));
             } else if (Objects.equals(map1.get(key), map2.get(key))) {
-                compareMap.put(key, new Property(Property.UNCHANGED, map1.get(key), map2.get(key)));
+                compareMap.put(key, new DiffProperty(DiffProperty.UNCHANGED, map1.get(key), map2.get(key)));
             } else {
-                compareMap.put(key, new Property(Property.CHANGED, map1.get(key), map2.get(key)));
+                compareMap.put(key, new DiffProperty(DiffProperty.CHANGED, map1.get(key), map2.get(key)));
             }
         }
         return compareMap;
