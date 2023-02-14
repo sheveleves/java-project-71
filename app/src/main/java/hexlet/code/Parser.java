@@ -14,10 +14,10 @@ import java.util.TreeSet;
 public class Parser {
 
     public static Map<String, Property> compareData(String data1,
-                                                  String data2, String typeFiles) throws Exception {
+                                                  String data2, String pathFiles) throws Exception {
 
-        Map<String, Object> map1 = getMapFromData(data1, typeFiles);
-        Map<String, Object> map2 = getMapFromData(data2, typeFiles);
+        Map<String, Object> map1 = getMapFromData(data1, pathFiles);
+        Map<String, Object> map2 = getMapFromData(data2, pathFiles);
         Set<String> keys = new TreeSet<>(map1.keySet());
         keys.addAll(map2.keySet());
 
@@ -39,9 +39,15 @@ public class Parser {
 
 
 
-    private static Map<String, Object> getMapFromData(final String data, final String typeFile) throws Exception {
+    private static Map<String, Object> getMapFromData(final String data, final String pathFile) throws Exception {
         if (data.isEmpty()) {
             return new LinkedHashMap<>();
+        }
+
+        int index = pathFile.indexOf('.');
+        String typeFile = index == -1 ? null : pathFile.substring(index + 1).toUpperCase();
+        if (typeFile.equals("YML") || typeFile.equals("YAML")) {
+            typeFile = "YAML";
         }
 
         ObjectMapper mapper;
