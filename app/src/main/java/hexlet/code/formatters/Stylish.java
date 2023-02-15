@@ -1,6 +1,7 @@
 package hexlet.code.formatters;
 
 import hexlet.code.DiffProperty;
+import hexlet.code.DiffProperty.Property;
 
 import java.util.Map;
 
@@ -17,19 +18,19 @@ public class Stylish {
 
         builder.append("{");
         for (Map.Entry<String, DiffProperty> entry : diff.entrySet()) {
-            if (entry.getValue().getState().equals(DiffProperty.ADD)) {
+            if (entry.getValue().getState().equals(Property.ADD)) {
                 builder.append("\n")
                         .append(add)
                         .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(DiffProperty.DELETE)) {
+            } else if (entry.getValue().getState().equals(Property.DELETE)) {
                 builder.append("\n")
                         .append(delete)
                         .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(DiffProperty.UNCHANGED)) {
+            } else if (entry.getValue().getState().equals(Property.UNCHANGED)) {
                 builder.append("\n")
                         .append(align)
                         .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(DiffProperty.CHANGED)) {
+            } else if (entry.getValue().getState().equals(Property.CHANGED)) {
                 builder.append("\n")
                         .append(delete)
                         .append(entry.getKey()).append(": ").append(entry.getValue().getOldValue());

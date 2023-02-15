@@ -7,12 +7,14 @@ import java.util.Map;
 
 public class Formatter {
     public static String formatter(String format, Map<String, DiffProperty> diff) throws JsonProcessingException {
-        if (format.equals("plain")) {
-            return Plain.writeCompare(diff);
-        } else if (format.equals("json")) {
-            return Json.writeCompare(diff);
-        } else {
-            return Stylish.writeCompare(diff);
+
+        switch (format) {
+            case "plain":
+                return Plain.writeCompare(diff);
+            case "json":
+                return Json.writeCompare(diff);
+            default:
+                return Stylish.writeCompare(diff);
         }
     }
 }

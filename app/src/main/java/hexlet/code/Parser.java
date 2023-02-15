@@ -3,6 +3,7 @@ package hexlet.code;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+import hexlet.code.DiffProperty.Property;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,13 +26,13 @@ public class Parser {
         Map<String, DiffProperty> compareMap = new TreeMap<>();
         for (String key: keys) {
             if (!map1.containsKey(key)) {
-                compareMap.put(key, new DiffProperty(DiffProperty.ADD, map2.get(key)));
+                compareMap.put(key, new DiffProperty(Property.ADD, map2.get(key)));
             } else if (!map2.containsKey(key)) {
-                compareMap.put(key, new DiffProperty(DiffProperty.DELETE, map1.get(key)));
+                compareMap.put(key, new DiffProperty(Property.DELETE, map1.get(key)));
             } else if (Objects.equals(map1.get(key), map2.get(key))) {
-                compareMap.put(key, new DiffProperty(DiffProperty.UNCHANGED, map1.get(key), map2.get(key)));
+                compareMap.put(key, new DiffProperty(Property.UNCHANGED, map1.get(key), map2.get(key)));
             } else {
-                compareMap.put(key, new DiffProperty(DiffProperty.CHANGED, map1.get(key), map2.get(key)));
+                compareMap.put(key, new DiffProperty(Property.CHANGED, map1.get(key), map2.get(key)));
             }
         }
         return compareMap;
