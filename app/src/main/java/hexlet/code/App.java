@@ -14,15 +14,10 @@ public class App implements Callable<Integer> {
     @Option(names = {"-f", "--format"}, defaultValue = "stylish",
             description = "output format [default: ${DEFAULT-VALUE}]")
     private String format;
-//    for debug
-//    @Parameters(index = "0", description = "path to first file",
-//            defaultValue = "/home/shev/MyProject2/java-project-71/app/src/test/resources/file3.yml")
+
     @Parameters(index = "0", description = "path to first file")
     private String filepath1;
 
-//    for debug
-//    @Parameters(index = "1", description = "path to second file",
-//            defaultValue = "/home/shev/MyProject2/java-project-71/app/src/test/resources/file4.yml")
     @Parameters(index = "1", description = "path to second file")
     private String filepath2;
 

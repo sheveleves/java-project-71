@@ -9,11 +9,6 @@ public final class DiffProperty {
         UNCHANGED
 
     }
-//    public static final String ADD = "ADD";
-//    public static final String DELETE = "DELETE";
-//    public static final String CHANGED = "CHANGED";
-//    public static final String UNCHANGED = "UNCHANGED";
-
 
     private Property state;
     private Object oldValue;

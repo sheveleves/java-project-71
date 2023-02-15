@@ -1,6 +1,5 @@
 package hexlet.code;
 
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,8 +10,7 @@ public class FileUtils {
         return Files.readString(path);
     }
 
-    public static String getPathFile(String filepath) {
+    public static String getFullPath(String filepath) {
         return Paths.get(filepath).toAbsolutePath().normalize().toString();
     }
-
 }
