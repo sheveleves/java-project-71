@@ -15,21 +15,19 @@ public class Parser {
 
         int index = fullPath.indexOf('.');
         String typeFile = index == -1 ? null : fullPath.substring(index + 1).toUpperCase();
-        if (typeFile.equals("YML") || typeFile.equals("YAML")) {
-            typeFile = "YAML";
-        }
 
         ObjectMapper mapper;
         switch (typeFile) {
             case "JSON":
                 mapper = new ObjectMapper();
                 break;
-            case "YAML":
+            case "YAML", "YML":
                 mapper = new YAMLMapper();
                 break;
             default:
                 throw new Exception("File type not defined!");
         }
+
         return mapper.readValue(data, new TypeReference<Map<String, Object>>() { });
     }
 }
