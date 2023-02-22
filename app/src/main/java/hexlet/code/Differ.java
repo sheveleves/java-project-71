@@ -1,6 +1,8 @@
 package hexlet.code;
 
 import hexlet.code.formatters.Formatter;
+
+import java.util.List;
 import java.util.Map;
 import static hexlet.code.FileUtils.readFileToString;
 
@@ -16,7 +18,7 @@ public class Differ {
         Map<String, Object> map1 = Parser.parserToMap(file1, fileExtension1);
         Map<String, Object> map2 = Parser.parserToMap(file2, fileExtension2);
 
-        Map<String, DiffProperty> diff = TreeDiffer.compareData(map1, map2);
+        List<DiffProperty> diff = TreeDiffer.compareData(map1, map2);
 
         return Formatter.formatter(format, diff);
     }

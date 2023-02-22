@@ -2,11 +2,11 @@ package hexlet.code.formatters;
 
 import hexlet.code.DiffProperty;
 import hexlet.code.DiffProperty.Property;
-
-import java.util.Map;
+import java.util.List;
 
 public class Stylish {
-    public static String writeCompare(Map<String, DiffProperty> diff) {
+
+    public static String writeCompare(List<DiffProperty> diff) {
         StringBuilder builder = new StringBuilder();
         String add = "  + ";
         String delete = "  - ";
@@ -17,26 +17,26 @@ public class Stylish {
         }
 
         builder.append("{");
-        for (Map.Entry<String, DiffProperty> entry : diff.entrySet()) {
-            if (entry.getValue().getState().equals(Property.ADD)) {
+        for (DiffProperty item : diff) {
+            if (item.getState().equals(Property.ADD)) {
                 builder.append("\n")
                         .append(add)
-                        .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(Property.DELETE)) {
+                        .append(item.getField()).append(": ").append(item.getCurrentValue());
+            } else if (item.getState().equals(Property.DELETE)) {
                 builder.append("\n")
                         .append(delete)
-                        .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(Property.UNCHANGED)) {
+                        .append(item.getField()).append(": ").append(item.getOldValue());
+            } else if (item.getState().equals(Property.UNCHANGED)) {
                 builder.append("\n")
                         .append(align)
-                        .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
-            } else if (entry.getValue().getState().equals(Property.CHANGED)) {
+                        .append(item.getField()).append(": ").append(item.getCurrentValue());
+            } else if (item.getState().equals(Property.CHANGED)) {
                 builder.append("\n")
                         .append(delete)
-                        .append(entry.getKey()).append(": ").append(entry.getValue().getOldValue());
+                        .append(item.getField()).append(": ").append(item.getOldValue());
                 builder.append("\n")
                         .append(add)
-                        .append(entry.getKey()).append(": ").append(entry.getValue().getCurrentValue());
+                        .append(item.getField()).append(": ").append(item.getCurrentValue());
             }
         }
         builder.append("\n}");

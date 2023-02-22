@@ -3,23 +3,22 @@ package hexlet.code.formatters;
 import hexlet.code.DiffProperty;
 import hexlet.code.DiffProperty.Property;
 
-import java.util.Map;
+import java.util.List;
 
 public class Plain {
-    public static String writeCompare(Map<String, DiffProperty> diff) {
+    public static String writeCompare(List<DiffProperty> diff) {
         StringBuilder builder = new StringBuilder();
 
-
-        for (Map.Entry<String, DiffProperty> entry : diff.entrySet()) {
-            switch (entry.getValue().getState()) {
+        for (DiffProperty item : diff) {
+            switch (item.getState()) {
                 case ADD -> builder.append("Property '")
-                        .append(entry.getKey()).append("' was added with value: ")
-                        .append(printUpdate(entry.getValue())).append("\n");
+                        .append(item.getField()).append("' was added with value: ")
+                        .append(printUpdate(item)).append("\n");
                 case DELETE -> builder.append("Property '")
-                        .append(entry.getKey()).append("' was removed").append("\n");
+                        .append(item.getField()).append("' was removed").append("\n");
                 case CHANGED -> builder.append("Property '")
-                        .append(entry.getKey()).append("' was updated. ")
-                        .append(printUpdate(entry.getValue())).append("\n");
+                        .append(item.getField()).append("' was updated. ")
+                        .append(printUpdate(item)).append("\n");
                 default -> { }
             }
         }
@@ -27,14 +26,14 @@ public class Plain {
         return builder.toString();
     }
 
-    public static String printUpdate(DiffProperty object) {
+    public static String printUpdate(DiffProperty item) {
 
-        if (object.getState().equals(Property.CHANGED)) {
-            return String.format("From %s to %s", printForCheckPrimitive(object.getOldValue()),
-                    printForCheckPrimitive(object.getCurrentValue()));
+        if (item.getState().equals(Property.CHANGED)) {
+            return String.format("From %s to %s", printForCheckPrimitive(item.getOldValue()),
+                    printForCheckPrimitive(item.getCurrentValue()));
         }
-        if (object.getState().equals(Property.ADD)) {
-            return String.format("%s", printForCheckPrimitive(object.getCurrentValue()));
+        if (item.getState().equals(Property.ADD)) {
+            return String.format("%s", printForCheckPrimitive(item.getCurrentValue()));
         }
         return "";
     }

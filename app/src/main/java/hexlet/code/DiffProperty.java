@@ -10,18 +10,25 @@ public final class DiffProperty {
 
     }
 
+    private String field;
     private Property state;
     private Object oldValue;
     private Object currentValue;
 
-    public DiffProperty(Property pState, Object pOldValue, Object pCurrentValue) {
+    public DiffProperty(String pField, Property pState, Object pOldValue, Object pCurrentValue) {
+        this.field = pField;
         this.state = pState;
         this.oldValue = pOldValue;
         this.currentValue = pCurrentValue;
     }
-    public DiffProperty(Property pState, Object pCurrentValue) {
+    public DiffProperty(String pField, Property pState, Object pCurrentValue) {
+        this.field = pField;
         this.state = pState;
         this.currentValue = pCurrentValue;
+    }
+
+    public String getField() {
+        return field;
     }
 
     public Property getState() {

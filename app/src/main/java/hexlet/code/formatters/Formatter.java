@@ -3,10 +3,10 @@ package hexlet.code.formatters;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import hexlet.code.DiffProperty;
 
-import java.util.Map;
+import java.util.List;
 
 public class Formatter {
-    public static String formatter(String format, Map<String, DiffProperty> diff) throws JsonProcessingException {
+    public static String formatter(String format, List<DiffProperty> diff) throws JsonProcessingException {
 
         switch (format) {
             case "plain":
