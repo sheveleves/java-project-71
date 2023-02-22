@@ -10,7 +10,10 @@ public class FileUtils {
         return Files.readString(path);
     }
 
-    public static String getFullPath(String filepath) {
-        return Paths.get(filepath).toAbsolutePath().normalize().toString();
+    public static String getFileExtension(String filepath) {
+
+        String fullPath =  Paths.get(filepath).toAbsolutePath().normalize().toString();
+        int index = fullPath.indexOf('.');
+        return index == -1 ? null : fullPath.substring(index + 1).toUpperCase();
     }
 }

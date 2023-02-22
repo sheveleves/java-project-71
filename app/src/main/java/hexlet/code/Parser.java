@@ -7,17 +7,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Parser {
-    public static Map<String, Object> parserToMap(String data, String pathFile) throws Exception {
+    public static Map<String, Object> parserToMap(String data, String fileExtension) throws Exception {
+
         if (data.isEmpty()) {
             return new HashMap<>();
         }
-        String fullPath = FileUtils.getFullPath(pathFile);
-
-        int index = fullPath.indexOf('.');
-        String typeFile = index == -1 ? null : fullPath.substring(index + 1).toUpperCase();
 
         ObjectMapper mapper;
-        switch (typeFile) {
+
+        switch (fileExtension) {
             case "JSON":
                 mapper = new ObjectMapper();
                 break;

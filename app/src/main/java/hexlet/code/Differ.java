@@ -10,8 +10,11 @@ public class Differ {
         String file1 = readFileToString(filepath1);
         String file2 = readFileToString(filepath2);
 
-        Map<String, Object> map1 = Parser.parserToMap(file1, filepath1);
-        Map<String, Object> map2 = Parser.parserToMap(file2, filepath2);
+        String fileExtension1 = FileUtils.getFileExtension(filepath1);
+        String fileExtension2 = FileUtils.getFileExtension(filepath2);
+
+        Map<String, Object> map1 = Parser.parserToMap(file1, fileExtension1);
+        Map<String, Object> map2 = Parser.parserToMap(file2, fileExtension2);
 
         Map<String, DiffProperty> diff = TreeDiffer.compareData(map1, map2);
 
