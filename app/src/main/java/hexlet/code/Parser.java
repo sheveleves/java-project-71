@@ -13,19 +13,23 @@ public class Parser {
             return new HashMap<>();
         }
 
-        ObjectMapper mapper;
-
         switch (fileExtension) {
             case "JSON":
-                mapper = new ObjectMapper();
-                break;
+                return parseJson(data);
             case "YAML", "YML":
-                mapper = new YAMLMapper();
-                break;
+                return parseJaml(data);
             default:
                 throw new Exception("File type not defined!");
         }
+    }
 
-        return mapper.readValue(data, new TypeReference<Map<String, Object>>() { });
+    private static Map<String, Object> parseJson(String data) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(data, new TypeReference<>() { });
+    }
+
+    private static Map<String, Object> parseJaml(String data) throws Exception {
+        ObjectMapper mapper = new YAMLMapper();
+        return mapper.readValue(data, new TypeReference<>() { });
     }
 }
