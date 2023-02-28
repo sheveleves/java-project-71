@@ -12,7 +12,7 @@ public class Formatter {
             case "plain":
                 return Plain.writeCompare(diff);
             case "json":
-                return Json.writeCompare(diff);
+                return Json.transform(diff);
             default:
                 return Stylish.writeCompare(diff);
         }

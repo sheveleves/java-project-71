@@ -7,7 +7,7 @@ import hexlet.code.DiffProperty;
 import java.util.List;
 
 public class Json {
-    public static String writeCompare(List<DiffProperty> diff) throws JsonProcessingException {
+    public static String transform(List<DiffProperty> diff) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(diff);
     }
