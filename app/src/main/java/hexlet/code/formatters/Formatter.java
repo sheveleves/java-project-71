@@ -6,7 +6,7 @@ import hexlet.code.DiffProperty;
 import java.util.List;
 
 public class Formatter {
-    public static String formatter(String format, List<DiffProperty> diff) throws JsonProcessingException {
+    public static String formate(String format, List<DiffProperty> diff) throws JsonProcessingException {
 
         switch (format) {
             case "plain":

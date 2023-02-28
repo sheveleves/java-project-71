@@ -24,7 +24,7 @@ public class Differ {
 
         List<DiffProperty> diff = TreeDiffer.compareData(map1, map2);
 
-        return Formatter.formatter(format, diff);
+        return Formatter.formate(format, diff);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {

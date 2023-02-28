@@ -19,7 +19,7 @@ public class Parser {
             case "YAML", "YML":
                 return parseJaml(data);
             default:
-                throw new RuntimeException ("File type not defined!");
+                throw new RuntimeException("File type not defined!");
         }
     }
 
